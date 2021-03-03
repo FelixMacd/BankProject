@@ -4,12 +4,23 @@ using System.Text;
 
 namespace BankProject
 {
-    class SavingsAccount
+    class SavingsAccount : Account
     {
         private double montlyInterestRate;
-        public void MontlyUpdate()
+
+        public SavingsAccount(string name, string address, double ir) : base(name,address)
         {
-            // add interest to balance
+            montlyInterestRate = ir;
+        }
+
+
+       public override void MU()
+        {
+            double b = getBalance();
+            double nb = montlyInterestRate * b + b;
+            setBalance(nb);
+
+           
         }
     }
 }

@@ -9,7 +9,7 @@ namespace BankProject
         private string name;
         private const int MAX_ACCOUNT = 100;
         private Account[] accounts;
-        private int accountsCreated = 0;
+      
 
         public Bank(string n)
         {
@@ -21,30 +21,48 @@ namespace BankProject
         public int createAccount(string name, string address, string type)
         {
             int accNo=-1;
-            // Check type of account requird
-            // create account
-            // add to array at position accountsCreated.
-            // check not out of range
 
+            if (Account.getAccountsCreated() < MAX_ACCOUNT)
+            {
+                if (type == "SA")
+                {
+
+                    accNo = Account.getAccountsCreated();
+                    accounts[Account.getAccountsCreated()] = new SavingsAccount(name, address, 0.045d);
+
+                }
+                else
+                {
+                    accNo = = Account.getAccountsCreated();
+                    accounts[Account.getAccountsCreated()] = new CurrentAccount(name, address, 10.0d);
+                }
+            }
             return accNo;
         }
+           
+            
+
 
         public bool withdraw(int a, double amount)
         {
-            // check a < accounts created
-            // accounts[a].withdraw(amount);
+            
+            return accounts[a].withdraw(amount);
 
         }
 
         public void deposit(int a, double amount)
         {
+            if (a < Account.getAccountsCreated())
+            {
 
 
+                accounts[a].deposit(amount);
+            }
         }
 
-        public void printBalance(int accNo)
+        public string printBalance(int accNo)
         {
-
+            return accounts[accNo].printBalance();
 
         }
 
