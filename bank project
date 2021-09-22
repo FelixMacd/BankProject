@@ -1,0 +1,12 @@
+string input = "";
+Console.WriteLine("Please enter your bank balance here.");
+input = Console.ReadLine();
+for (int x = 0; x< input.Length; x++)
+{
+  if(str[x]>=48 && str[x] <= 57);
+    {
+      input[x] = "*";
+    }
+ }
+
+Console.WriteLine(input);
